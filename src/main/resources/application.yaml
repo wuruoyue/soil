@@ -1,0 +1,53 @@
+
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 8085
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    # Tomcat启动初始化的线程数，默认值25
+    threads:
+      min-spare: 30
+      max: 800
+
+# 日志配置
+logging:
+  level:
+    org.springframework: warn
+
+# Spring配置
+spring:
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
+  profiles: 
+    active: dev
+  # 文件上传
+  servlet:
+     multipart:
+       # 单个文件大小
+       max-file-size:  10MB
+       # 设置总上传的文件大小
+       max-request-size:  20MB
+
+
+#### Dataway
+
+# 启用 Dataway 功能（默认不启用）
+HASOR_DATAQL_DATAWAY: true
+# 开启 ui 管理功能（注意生产环境必须要设置为 false，否则会造成严重的生产安全事故）
+HASOR_DATAQL_DATAWAY_ADMIN: true
+
+# 配置分页方言
+HASOR_DATAQL_FX_PAGE_DIALECT: mysql
+
+# （可选）API工作路径
+HASOR_DATAQL_DATAWAY_API_URL: /dw/api/
+# （可选）ui 的工作路径，只有开启 ui 管理功能后才有效
+HASOR_DATAQL_DATAWAY_UI_URL: /dw/web/
